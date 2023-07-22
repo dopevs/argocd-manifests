@@ -64,6 +64,7 @@ jobs:
           title: "Update deployment image tag"
           body: This PR is auto created by GitHub Action
           branch: update-tag
+          base: main
           branch-suffix: random
           delete-branch: true
           labels: |
