@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: waiyanwinhtain/nginx-demo:62e94eb0
+          image: waiyanwinhtain/nginx-demo:3cb36aa9
           ports:
             - name: http
               containerPort: 80
