@@ -3,7 +3,7 @@ name: Docker Build and Push
 on:
   push:
     branches:
-      - main  # Replace with the branch name you want to trigger the action on
+      - staging  # Replace with the branch name you want to trigger the action on
 
 env:
   IMAGE_NAME: waiyanwinhtain/nginx-demo # Replace with your Docker image name (e.g., myusername/myimage)
