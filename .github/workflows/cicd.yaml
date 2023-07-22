@@ -53,7 +53,7 @@ jobs:
         id: update-deployment-image
         run: |
           yq e '.spec.template.spec.containers[0].image = "${{ env.IMAGE_NAME }}:${{ steps.get_sha.outputs.SHA_SHORT }}"' -i 02-deployment.yaml
-        working-directory: nginx-demo/02-deployment.yaml  # Replace with the path to your deployment.yaml file
+        working-directory: nginx-demo
 
       - name: Create Pull Request
         id: cpr
