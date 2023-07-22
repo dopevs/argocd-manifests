@@ -55,3 +55,30 @@ jobs:
           yq e '.spec.template.spec.containers[0].image = "${{ env.IMAGE_NAME }}:${{ steps.get_sha.outputs.SHA_SHORT }}"' -i 02-deployment.yaml
         working-directory: nginx-demo
 
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.AUTH_TOKEN }}
+          commit-message: "update deployment image tag"
+          title: "Update deployment image tag"
+          body: This PR is auto created by GitHub Action
+          branch: update-tag
+          base: main
+          branch-suffix: random
+          delete-branch: true
+          labels: |
+            automated-pr
+
+      # # Sleep for some seconds to ensure the successes of the next 2 steps
+      # - name: Sleep for 1-5 seconds
+      #   run: |
+      #     sleep $(( $RANDOM % 5 + 1 ))
+
+      # - name: Enable Pull Request Automerge
+      #   if: steps.cpr.outputs.pull-request-operation == 'created'
+      #   uses: peter-evans/enable-pull-request-automerge@v2
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+      #     merge-method: squash
