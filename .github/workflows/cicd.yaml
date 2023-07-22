@@ -59,6 +59,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
+          token: ${{ secrets.AUTH_TOKEN }}
           commit-message: "update deployment image tag"
           title: "Update deployment image tag"
           body: This PR is auto created by GitHub Action
